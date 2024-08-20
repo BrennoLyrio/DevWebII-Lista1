@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let totalFrete = 0
+        let rastreamento, regiao ;
+        let totalPecas = parseInt(prompt("Qual o número total de peças a serem transportadas? "))
+        do{
+            rastreamento = prompt("Deseja rastreamento na entrega (s ou n)? ")
+            if(rastreamento === 's'){
+                totalFrete += 200
+                break
+            }
+            if (rastreamento === 'n'){
+                break
+            }
+        } while (true)
+
+        do {
+            regiao = parseInt(prompt(`Qual a sua Região? (só digite o número da Região)
+            Região 1: Sudeste
+            Região 2: Sul
+            Região 3: Centro-Oeste`))
+            if(regiao === 3 || regiao === 2 || regiao === 1){
+                break
+            }
+
+        }while(true)
+
+        let distancia = parseFloat(prompt("Qual a distância total?"))
+
+        const faixaFrete = [
+                {local: 1, taxa: 1.20, desconto: 12/100},
+                {local: 2, taxa: 1.10, desconto: 10/100},
+                {local: 3, taxa: 1.15, desconto: 8/100}
+            ]
+        // até 1000 peças o valor do frete será calculado por peça, com base na regiao
+        if(totalPecas <= 1000){
+            for (faixa of faixaFrete) {
+                const {local, taxa} = faixa
+                if (regiao == local){
+                    totalFrete += totalPecas * taxa
+                    break
+                }
+            }
+        }
+
+        if(totalPecas > 1000){
+            acimaPecas = totalPecas - 1000
+            for (faixa of faixaFrete) {
+                const {local,taxa,desconto} = faixa
+                if (regiao == local) {
+                    totalFrete += totalPecas * taxa
+                    totalFrete += (acimaPecas * (taxa - (taxa * desconto)))
+                    break
+                }
+            }
+            
+        }
+        let combustivel = distancia * 5
+        totalFrete += combustivel
+
+        alert(`O valor do frete é de R$ ${totalFrete.toFixed(2)}, incluindo R$ ${combustivel.toFixed(2)} para combustível e R$200.00 para rastreamento (se aplicável) `)
+    </script>
+</body>
+</html>

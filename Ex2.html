@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var nome;
+        //prompt("Qual o seu nome?")
+        // alert(`Olá ${nome}, seja Bem-vindo!`)
+        
+        let idade = 0
+        let opcao = 0
+        
+        // if (idade < 15){
+        //     alert(`Criança`)
+        // }
+        // else if (idade < 30){
+        //     alert(`Jovem`)
+        // }
+        // else if (idade < 60) {
+        //     alert(`Adulto`)
+        // }
+        // else if (idade > 60) {
+        //     alert(`Idoso`)
+        // }
+        const faixaEtaria = [
+            {limite: 15, classificacao: 'Criança'},
+            {limite: 30, classificacao: 'Jovem'},
+            {limite: 60, classificacao: 'Adulto'},
+            {limite: Infinity, classificacao: 'Idoso'}
+        ]
+        const classificar = (nome, idade) => {
+            for (const faixa of faixaEtaria) {
+                const {limite, classificacao} = faixa
+                if (idade < limite) {
+                    alert(`${nome} tem ${idade} anos e é classificado como: ${classificacao}`)
+                    return;
+                }
+                // alert("Retornando")
+            }
+        }
+        do{
+            nome = prompt("Qual o seu nome?")
+            alert(`Olá ${nome}, seja Bem-vindo!`)
+            do {
+                idade = parseFloat(prompt("Qual a sua idade?"))
+                if (Number.isInteger(idade) && idade >= 0) {
+                    break
+                }
+                alert("Erro, coloque novamente uma idade válida")
+            } while (true)
+            
+            classificar(nome,idade)
+            
+            opcao = parseInt(prompt("Continuar: 1, parar: 0"))
+        }while (opcao === 1);
+        
+        alert("Programa encerrado.")
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        do {
+            let nota1, nota2, nota3;
+            do {
+
+                nota1 = parseInt(prompt("Coloque a nota de Atividade Prática: "))
+                if (Number.isInteger(nota1) && nota1 >= 0 && nota1 <= 10) {
+                    break
+                }
+                else {
+                    alert("Nota inválida. Deve ser um número válido")
+                }
+
+            } while (true)
+            let peso1 = parseFloat(prompt("qual o seu peso? "))
+
+            do {
+                nota2 = parseInt(prompt("Coloque a nota da Prova do semestre: "))
+                if (Number.isInteger(nota2) && nota2 <= 10) {
+                    break
+                }
+                else {
+                    alert("Nota inválida. Deve ser um número válido")
+                }
+
+            } while (true)
+
+            let peso2 = parseFloat(prompt("qual o seu peso? "))
+
+            do {
+                nota3 = parseInt(prompt("Coloque a nota do Trabalho teórico: "))
+                if (Number.isInteger(nota3) && nota3 <= 10) {
+                    break
+                }
+                else {
+                    alert("Nota inválida. Deve ser um número válido")
+                }
+            } while (true)
+            let peso3 = parseFloat(prompt("qual o seu peso? "))
+
+            
+            let calculo = ((peso1 * nota1) + (peso2 * nota2) + (peso3 * nota3)) / (peso1 + peso2 + peso3)
+
+            // alert(`Sua nota será: ${calculo.toFixed(2)}`)
+
+
+            let classificacao = ['A', 'B', 'C', 'D', 'E', 'F']
+
+            let notaFinal;
+
+            for (const x of classificacao) {
+                if (calculo > 9) {
+                    notaFinal = classificacao[0]
+                } else if (calculo > 8) {
+                    notaFinal = classificacao[1]
+                } else if (calculo > 7) {
+                    notaFinal = classificacao[2]
+                } else if (calculo > 6) {
+                    notaFinal = classificacao[3]
+                }
+                else if (calculo > 5) {
+                    notaFinal = classificacao[4]
+                }
+                else {
+                    notaFinal = classificacao[5]
+                }
+            }
+            alert(`A nota final do aluno será: ${notaFinal}`)
+
+            continuar = parseInt(prompt("Caso queira continuar, digite 1, e sair, digite 0:"))
+        }while (continuar === 1)
+
+        alert("Encerrando o programa.")
+    </script>
+</body>
+
+</html>

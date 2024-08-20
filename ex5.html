@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // desenvolver um pseudocódigo que automatize o cálculo do salário dos funcionários, levando em consideração
+        // o salário-mínimo, o turno de trabalho, a categoria do funcionário, e outro fatores.
+        let turno, catFun, salaMinimo;
+
+        let codFunc = parseInt(prompt("Qual o seu código?"))
+
+        let numHoras = parseInt(prompt("Número de horas trabalhadas no mês: "))
+        
+        do {
+            turno = prompt("Qual seu turno de Trabalho? M (matutino), V (vespertino), N (noturno)")
+            if (turno === 'M' || turno === 'V' || turno === 'N'){
+                break
+            }
+        }while (true)
+
+        do {
+            catFun = prompt("Qual sua categoria? (F para funcionário ou G para gerente):")
+            if (catFun === 'F'|| catFun === 'G'){
+                break
+            }
+        }while (true)
+
+
+        do {
+            salaMinimo = parseFloat(prompt("Qual o salário mínimo? "))
+            if(isNaN(salaMinimo) || salaMinimo <= 1000) {
+            alert("Por favor, insira um valor válido para o salário")
+            }
+            else{
+                break
+            }
+        } while(true)
+
+
+        let valorHora;
+
+        if (catFun === "F"){
+            if (turno === "M"){
+                valorHora = 0.1 * salaMinimo
+            }
+            else if (turno === "V") {
+                valorHora = 0.12 * salaMinimo
+            }
+            else if (turno === "N") {
+                valorHora = 0.15 * salaMinimo
+            }
+            else{
+                alert(`Aconteceu algum erro`)
+            }
+        }
+
+        else {
+            if (turno === "M"){
+                valorHora = 0.2 * salaMinimo
+            }
+            else if (turno === "V") {
+                valorHora = 0.25 * salaMinimo
+            }
+            else if (turno === "N") {
+                valorHora = 0.3 * salaMinimo
+            }
+            else{
+                alert(`Aconteceu algum erro`)
+            }
+        }
+
+        let salaInicial = numHoras * valorHora
+
+
+        const auxilio = (salario) => {
+            if (salario <= 800.00) {
+               return salario * 0.25
+            }else if (salario < 1200.00) {
+                return salario * 0.2
+            } else {
+                return salario * 0.15
+            }
+        }
+
+        let aux = auxilio(salaInicial)
+        
+        let salaFinal = aux + salaInicial
+
+        alert(`
+        Código do Funcionário: ${codFunc} 
+        Número de horas Trabalhadas: ${numHoras}h
+        Valor da hora: R$${valorHora.toFixed(2)} 
+        Salário Inicial: R$${salaInicial.toFixed(2)}
+        Auxílio-alimentação: R$${aux.toFixed(2)}
+        Salário Final: R$${salaFinal.toFixed(2)}           
+        `)
+
+
+
+    </script>
+</body>
+</html>

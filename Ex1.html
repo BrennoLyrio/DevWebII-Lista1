@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var nome;
+        nome = prompt("Qual o seu nome?")
+        alert("Olá, " + nome +  "! Seja Bem Vindo! ")
+        var altura;
+        altura = prompt("Qual a sua altura (cm)?")
+        var peso;
+        peso =prompt("Qual o seu peso em Kg? ")
+
+        altura = parseFloat(altura)
+        peso = parseFloat(peso)
+        
+        //deixaremos a altura em metro
+        altura = altura / 100
+
+        imc = peso / (altura) ** 2
+        imc = parseFloat(imc.toFixed(3))
+        if (imc < 16) {
+            alert(` ${nome} possui um Indice de Massa Corporal igual a ${imc}, sendo classificado como: Baixo peso muito grave.`)
+        }
+        else if (imc >= 16 && imc <= 16.99 ) {
+            alert(`${nome} possui um Indice de Massa Corporal igual a ${imc}, sendo classificado como: Baixo peso grave.`)
+        }
+        else if (imc >= 17 && imc <= 18.49) {
+            alert(`${nome} possui um Indice de Massa Corporal igual a ${imc}, sendo classificado como: Baixo peso.`)
+        }
+        else if (imc >= 18.5 && imc <= 24.99) {
+            alert(`${nome} possui um Indice de Massa Corporal igual a ${imc}, sendo classificado como: Peso Normal.`)
+        }
+        else if (imc >= 25 && imc <= 29.99) {
+            alert(`${nome} possui um Indice de Massa Corporal igual a ${imc}, sendo classificado como: Sobrepeso.`)
+        }
+        else if (imc >= 30 && imc <= 34.99) {
+            alert(`${nome} possui um Indice de Massa Corporal igual a ${imc}, sendo classificado como: Obesidade grau I.`)
+        }
+        else if (imc >= 35 && imc <= 39.99) {
+            alert(`${nome} possui um Indice de Massa Corporal igual a ${imc}, sendo classificado como: Obesidade grau II.`)
+        }
+        else if (imc >= 40) {
+            alert(`${nome} possui um Indice de Massa Corporal igual a ${imc}, sendo classificado como: Obesidade grau III.`)
+        }
+        else {
+            alert("Aconteceu algum erro! Por favor colocar as repostas combase no que foi pedido.")
+        }
+    </script>
+</body>
+</html>
